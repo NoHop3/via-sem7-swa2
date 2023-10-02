@@ -24,7 +24,5 @@
     "strictNullChecks": true,
     "isolatedModules": true
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
