@@ -91,7 +91,7 @@
     "@storybook/preset-create-react-app": "7.4.5",
     "@storybook/react": "7.4.5",
     "@storybook/react-webpack5": "7.4.5",
-    "@storybook/testing-library": "0.2.1",
+    "@storybook/testing-library": "0.2.2",
     "@svgr/plugin-svgo": "8.1.0",
     "@svgr/webpack": "8.1.0",
     "@testing-library/jest-dom": "5.17.0",
