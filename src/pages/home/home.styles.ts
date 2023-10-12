@@ -1,3 +1,4 @@
+// src/pages/home/home.styles.ts
 import { Box, Typography } from '@mui/material';
 import styled from 'styled-components';
 

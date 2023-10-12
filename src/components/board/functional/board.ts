@@ -46,6 +46,8 @@ export function Create<T>(generator: Generator<T>, rows: number, cols: number): 
     for (let col = 0; col < cols; col++) {
       rowPieces.push(generator.next());
     }
+    console.log(rowPieces, 'rowPieces');
+    console.log(pieces, 'pieces');
     pieces.push(rowPieces);
   }
 
