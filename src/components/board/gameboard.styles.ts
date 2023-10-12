@@ -1,6 +1,10 @@
 // src/components/board/gameboard.styles.ts
 import styled from 'styled-components';
 
+const highlightedPiece = {
+  backgroundColor: 'yellow', // Customize the highlight color
+};
+
 export const StyledBoard = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 60px); /* Adjust the number of columns and piece size as needed */
@@ -21,4 +25,9 @@ export const StyledBoard = styled.div`
     background-color: #ffffff; /* Adjust the background color of the pieces */
     cursor: pointer;
   }
+
+  .selected {
+    ${highlightedPiece};
+  }
 `;
+

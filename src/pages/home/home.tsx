@@ -20,7 +20,7 @@ export const _Home: React.FC<IHomeProps> = (props: IHomeProps) => {
   return (
     <StyledHomeWrapper>
       <StyledHomeTitle>{title}</StyledHomeTitle>
-      <GameBoard rows={3} cols={3} generator={generator} />
+      <GameBoard rows={5} cols={5} generator={generator} />
     </StyledHomeWrapper>
   );
 };
