@@ -8,7 +8,6 @@ import { StyledTypography } from '../../../shared/styles';
 export const _ColorPicker = (props: ColorPickerProps) => {
   const [color, setColor] = useState(props.color);
   const handleColorChange = (color: ColorResult) => {
-    console.log(color.hex);
     setColor(color.hex);
     props.onColorChange(color.hex);
   };

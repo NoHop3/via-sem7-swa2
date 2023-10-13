@@ -1,33 +1,39 @@
 // src/components/board/gameboard.styles.ts
 import styled from 'styled-components';
+import { Box } from '@mui/material';
 
-const highlightedPiece = {
-  backgroundColor: 'yellow', // Customize the highlight color
-};
-
-export const StyledBoard = styled.div`
+export const StyledBoard = styled(Box)`
   display: grid;
-  grid-template-rows: repeat(3, 60px); /* Adjust the number of columns and piece size as needed */
   gap: 5px;
-  background-color: #e0e0e0; /* Adjust the background color of the board */
+  background-color: ${({ theme }) => theme.palette.background};
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 8px solid ${({ theme }) => theme.palette.primary.main};
 
   .board-row {
     display: flex;
     flex-direction: row;
   }
 
+  .board-piece.matching {
+    background-color: ${({ theme }) => theme.palette.secondary.main};
+  }
+
   .board-piece {
+    margin: 8px;
+    color: ${({ theme }) => theme.palette.text.primary};
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px; /* Adjust the width and height as needed */
-    height: 60px;
-    background-color: #ffffff; /* Adjust the background color of the pieces */
+    width: 50px;
+    height: 50px;
     cursor: pointer;
+    border: 8px solid ${({ theme }) => theme.palette.primary.main};
+    transition: background-color 0.5s ease-in-out;
+    border-radius: 1rem;
   }
 
   .selected {
-    ${highlightedPiece};
+    background-color: ${({ theme }) => theme.palette.primary.contrastText};
   }
 `;
-

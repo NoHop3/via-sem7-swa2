@@ -110,7 +110,7 @@ export const _Header = (props: HeaderProps) => {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        SEP6
+        SWA2
       </Typography>
       <Divider />
       <List>
