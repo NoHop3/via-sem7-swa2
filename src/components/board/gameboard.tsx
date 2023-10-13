@@ -128,12 +128,15 @@ const GameBoard: React.FC<GameBoardProps> = ({ rows, cols, generator }) => {
       for (let i = startRow; i <= endRow; i++) {
         if (direction === 'vertical') {
           updatedPieceClasses[i][col] = 'matching';
+          updatedPieceClasses[i][col] = `matchCombo${consecutiveCount}`;
         } else {
           updatedPieceClasses[col][i] = 'matching';
+          updatedPieceClasses[col][i] = `matchCombo${consecutiveCount}`;
         }
       }
       setScore(score + consecutiveCount * 10);
       hasMatches = true;
+      setPieceClasses(updatedPieceClasses);
     }
 
     // Check for horizontal matches
@@ -190,30 +193,32 @@ const GameBoard: React.FC<GameBoardProps> = ({ rows, cols, generator }) => {
       }
     }
 
-    // Remove marked pieces and shift others down
-    for (let col = 0; col < updatedBoard.cols; col++) {
-      for (let row = updatedBoard.rows - 1; row >= 0; row--) {
-        if ((updatedPieceClasses[row][col] ?? '').includes('matching')) {
-          for (let i = row; i > 0; i--) {
-            updatedBoard.pieces[i][col] = updatedBoard.pieces[i - 1][col];
-          }
-          updatedBoard.pieces[0][col] = generateNewPiece();
-        }
-      }
-    }
-
     if (hasMatches) {
-      // Clear matching class after removing and shifting
-      for (let col = 0; col < updatedBoard.cols; col++) {
-        for (let row = updatedBoard.rows - 1; row >= 0; row--) {
-          if ((updatedPieceClasses[row][col] ?? '').includes('matching')) {
-            updatedPieceClasses[row][col] = '';
+      // First wait a second then proceed
+      setTimeout(() => {
+        for (let col = 0; col < updatedBoard.cols; col++) {
+          for (let row = updatedBoard.rows - 1; row >= 0; row--) {
+            if ((updatedPieceClasses[row][col] ?? '').includes('matchCombo')) {
+              updatedPieceClasses[row][col] = 'toRemove';
+            }
           }
         }
-      }
+        // Remove marked pieces and shift others down
+        for (let col = 0; col < updatedBoard.cols; col++) {
+          for (let row = updatedBoard.rows - 1; row >= 0; row--) {
+            if ((updatedPieceClasses[row][col] ?? '').includes('toRemove')) {
+              updatedPieceClasses[row][col] = '';
 
-      setPieceClasses(updatedPieceClasses);
-      setBoard(updatedBoard);
+              for (let i = row; i > 0; i--) {
+                updatedBoard.pieces[i][col] = updatedBoard.pieces[i - 1][col];
+              }
+              updatedBoard.pieces[0][col] = generateNewPiece();
+            }
+          }
+        }
+        setPieceClasses(updatedPieceClasses);
+        setBoard(updatedBoard);
+      }, 1000);
     }
   }
 

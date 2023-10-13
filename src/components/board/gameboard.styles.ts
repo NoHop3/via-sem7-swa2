@@ -15,8 +15,14 @@ export const StyledBoard = styled(Box)`
     flex-direction: row;
   }
 
-  .board-piece.matching {
+  .board-piece.matchCombo3 {
     background-color: ${({ theme }) => theme.palette.secondary.main};
+  }
+  .board-piece.matchCombo4 {
+    background-color: ${({ theme }) => theme.palette.divider};
+  }
+  .board-piece.matchCombo5 {
+    background-color: ${({ theme }) => theme.palette.text.secondary};
   }
 
   .board-piece {
